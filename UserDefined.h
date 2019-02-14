@@ -3,7 +3,7 @@
  *
  * @file    UserDefined.h
  *
- * @author  Abelardo López Lagunas
+ * @author  Alejandro Vazquez, Benjamin Avila
  *
  * @date    Fri 20 May 2016 22:09 DST
  *
