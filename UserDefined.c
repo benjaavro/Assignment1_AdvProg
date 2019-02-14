@@ -33,8 +33,13 @@
  *
  */
 
-#include <glib.h>
-#include 'UserDefined.h'
+#include <stdio.h>                                    // Used for printf
+#include <stdlib.h>                     // Used for malloc, & EXIT codes
+#include <assert.h>                         // Used for the assert macro
+#include <string.h>                        // For strcmp, strlen, strcpy
+#include <glib.h>  // Bring in glib for all doubly-linked list functions
+#include "UserDefined.h"               // All the user defined functions
+
 /**
  * @struct myData
  *
@@ -65,7 +70,9 @@
  *
  */
 
-int PrintItem (const void *data_p)(return 0;)
+int PrintItem (const void *data_p){
+    return 0;
+}
 
 /**
  *
@@ -88,7 +95,9 @@ int PrintItem (const void *data_p)(return 0;)
  *          actual printing of the data element.
  *
  */
-int PrintList (GList * myList_p);
+int PrintList (GList * myList_p) {
+    return 0;
+}
 
 /**
  *
@@ -111,7 +120,15 @@ int PrintList (GList * myList_p);
  *         of the input string and the input number.
  *
  */
-node_p NewItem (int theNumber, char * theString);
+myData new;
+
+node_p NewItem (int theNumber, char * theString) {
+    new.number = theNumber;                 // Asign the number read to the struct for a new node.
+    new.theString = theString;              // Asign the String read to the struct for a new node.
+    
+    //printf("Entró a New Item -> Num: %d -> String: %s\n", new.number, new.theString);
+    return &new;
+}
 
 /**
  *
@@ -132,7 +149,9 @@ node_p NewItem (int theNumber, char * theString);
  *          @c DestroyList() since it will call it to de-allocate the
  *          user-defined structure.
  */
-int FreeItem (const void *data_p);
+int FreeItem (const void *data_p) {
+    return 0;
+}
 
 /**
  *
@@ -153,7 +172,9 @@ int FreeItem (const void *data_p);
  * @see FreeItem()
  *
  */
-int DestroyList (GList * theList_p);
+int DestroyList (GList * theList_p) {
+    return 0;
+}
 
 /**
  *
@@ -180,7 +201,9 @@ int DestroyList (GList * theList_p);
  * @endcode
  *
  */
-int CompareItems (const void *item1_p, const void *item2_p);
+int CompareItems (const void *item1_p, const void *item2_p) {
+    return 0;
+}
 
 /**
  *
@@ -214,7 +237,9 @@ int CompareItems (const void *item1_p, const void *item2_p);
  *
  *
  */
-int CompareItemsWithKey (const void *item1_p, const void *item2_p, int key);
+int CompareItemsWithKey (const void *item1_p, const void *item2_p, int key) {
+    return 0;
+}
 
 /**
  *
@@ -263,7 +288,9 @@ void * CopyItems (const void *source_p);
  * @note   The user must check if the returned pointer is NULL
  *         before de-referencing it.
  */
-GList * CopyList (GList * inputList)(return NULL;)
+GList * CopyList (GList * inputList) {
+    return NULL;
+}
 
 /**
  *
@@ -292,4 +319,6 @@ GList * CopyList (GList * inputList)(return NULL;)
  *         before de-referencing it.
  *
  */
-GList * FindInList (GList * myList_p, const void *value_p, int key);
+GList * FindInList (GList * myList_p, const void *value_p, int key) {
+    return 0;
+}
