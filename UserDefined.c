@@ -33,8 +33,13 @@
  *
  */
 
-#include <glib.h>
-#include "UserDefined.h"
+#include <stdio.h>                                    // Used for printf
+#include <stdlib.h>                     // Used for malloc, & EXIT codes
+#include <assert.h>                         // Used for the assert macro
+#include <string.h>                        // For strcmp, strlen, strcpy
+#include <glib.h>  // Bring in glib for all doubly-linked list functions
+#include "UserDefined.h"               // All the user defined functions
+
 /**
  * @struct myData
  *
@@ -115,8 +120,14 @@ int PrintList (GList * myList_p) {
  *         of the input string and the input number.
  *
  */
+myData new;
+
 node_p NewItem (int theNumber, char * theString) {
-    return NULL;
+    new.number = theNumber;                 // Asign the number read to the struct for a new node.
+    new.theString = theString;              // Asign the String read to the struct for a new node.
+    
+    //printf("Entró a New Item -> Num: %d -> String: %s\n", new.number, new.theString);
+    return &new;
 }
 
 /**
