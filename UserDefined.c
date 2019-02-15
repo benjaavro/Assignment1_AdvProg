@@ -330,7 +330,6 @@ GList * CopyList (GList * inputList) {
  *
  */
 GList * FindInList (GList * myList_p, const void *value_p, int key) {
-    int value = *(const int *) value_p;
     if (key == SINGLESTR) {
         GList *l;
         for (l = myList_p; l != NULL; l = l->next)
@@ -339,16 +338,6 @@ GList * FindInList (GList * myList_p, const void *value_p, int key) {
             if (strcmp(value_p,aux->theString) == 0) {
                 printf("Node Found!     Number: %d  Value: %s\n",aux->number,aux->theString);
                 return l;   
-            }
-        }
-    }
-    if (key == SINGLEINT) {
-        GList *l;
-        for (l = myList_p; l != NULL; l = l->next)
-        {
-            node_p aux = l->data;
-            if (value == aux->number) {
-                return l;
             }
         }
     }
