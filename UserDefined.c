@@ -130,7 +130,7 @@ int PrintList (GList * myList_p) {
 
 node_p NewItem (int theNumber, char * theString) {
     node_p newNode;
-    newNode = (node_p)malloc(sizeof(myData));                // Create a new node
+    newNode = (node_p)malloc(sizeof(myData));  // Create a new node
     newNode -> number = theNumber; // Assing number to the new node
     newNode -> theString = (char *)malloc(strlen(theString)+1); // Allocate memory for the string
     strcpy(newNode -> theString, theString); // Assing the string to the new node
@@ -275,6 +275,8 @@ int CompareItemsWithKey (const void *item1_p, const void *item2_p, int key) {
  *          The caller is responsible for de-allocating the new item.
  */
 void * CopyItems (const void *source_p){
+    node_p source = (node_p)source_p; // Get the pointer
+    source = (node_p)malloc(sizeof(myData)); // Allocate memory
     return NULL;
 }
 
@@ -300,8 +302,8 @@ void * CopyItems (const void *source_p){
  *         before de-referencing it.
  */
 GList * CopyList (GList * inputList) {
-     GList *l;
-    l = g_list_copy_deep(inputList,CopyItems(inputList),NULL);
+    GList *l; // Create the structure to receive the copy
+    l = g_list_copy_deep(inputList,CopyItems(inputList),NULL); // Copy the list
     return l;
 }
 
