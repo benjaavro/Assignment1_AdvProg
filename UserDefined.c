@@ -126,7 +126,7 @@ node_p NewItem (int theNumber, char * theString) {
     new.number = theNumber;                 // Asign the number read to the struct for a new node.
     new.theString = theString;              // Asign the String read to the struct for a new node.
     
-    printf("Entró a New Item -> Num: %d -> String: %s\n", new.number, new.theString);
+    //printf("Entró a New Item -> Num: %d -> String: %s\n", new.number, new.theString);
     return &new;
 }
 
