@@ -102,6 +102,8 @@ int main (int argc, const char * argv[]) {          // Program entry point
                 printf("Integer read is %d:\n", aNode_p->number);
                 printf("String read is %s:\n", aNode_p->theString);
 #endif
+                
+                
                 /***** Test insertion at the Tail *****/
                theList_p = g_list_append(theList_p, aNode_p);
 #ifdef DEBUG
@@ -112,8 +114,9 @@ int main (int argc, const char * argv[]) {          // Program entry point
 #endif
             }
            
-            /***** Test deletion at the tail *****/
            
+           
+            /***** Test deletion at the tail *****/
             printf("-Original list:\n");
             if (PrintList(theList_p) != EXIT_SUCCESS)
                 printf("Error printing the list\n");
@@ -125,9 +128,10 @@ int main (int argc, const char * argv[]) {          // Program entry point
             printf("\n-Test deletion from the Tail:\n");
             if (PrintList(theList_p) != EXIT_SUCCESS)
                 printf("Error printing the list\n");
-            
-            /****** Test Insertion at the Head *****/
+        
            
+           
+            /****** Test Insertion at the Head *****/
            /*aNode_p = NewItem(9, "Gyro Gearloose");          // New element
             
 #ifdef DEBUG
@@ -141,9 +145,10 @@ int main (int argc, const char * argv[]) {          // Program entry point
            if (PrintList(theList_p) != EXIT_SUCCESS)
               printf("Error printing the list\n");*/
             
+           
+           
             /***** Test deletion at the head *****/
-           /*
-           aNode_p = g_list_first(theList_p)->data; // First element address
+           /*aNode_p = g_list_first(theList_p)->data; // First element address
            theList_p = g_list_remove(theList_p, aNode_p);     // Remove node
 
 #ifdef DEBUG
@@ -157,16 +162,19 @@ int main (int argc, const char * argv[]) {          // Program entry point
            printf("\n Test deletion from the Head:\n");
            if (PrintList(theList_p) != EXIT_SUCCESS)
               printf("Error printing the list\n");*/
+           
 
+           
+           
            /***** Test finding a node in the list *****/
-           /*
+           printf("\n");
            item_p = FindInList(theList_p, "Donald", SINGLESTR); // Get index
            if (item_p == NULL){
               perror("Error: failed to find selected node \n");
-           }*/
+           }
+           
 
             /***** Test insertion in the middle *****/
-           /*
            aNode_p = NewItem(10, "Launchpad");               // New element
 
            // Insert data before item_p
@@ -181,7 +189,7 @@ int main (int argc, const char * argv[]) {          // Program entry point
 
            printf("\n Test insertion in the middle:\n");
            if (PrintList(theList_p) != EXIT_SUCCESS)
-              printf("Error printing the list\n");*/
+              printf("Error printing the list\n");
 
            /***** Test deletion in the middle & finding a string *****/
            /*

@@ -59,28 +59,13 @@
  *
  */
 
-
-/* !!!CODIGO DE LUZ!!!
-int PrintItem (const void *data_p){
-	if(data_p != NULL){												//Check if the data block is empty
-		node_p nodeToPrint = (node_p)data_p;						//Assign data block to the local node
-		printf("The number contained is: %d\n",nodeToPrint->number);//Print the number contained in the block
-		printf("The string is: %s\n",nodeToPrint->theString);		//Print the string contained in the block
-		return(EXIT_SUCCESS);										//Inform of successful print
-	}else{
-		printf("The list is empty\n");								//Inform the user the list is empty
-		return(EXIT_FAILURE);										//Inform failure
-	}
-}
-*/
-
 int PrintItem (const void *data_p){
     if (data_p != NULL) {
         node_p nodePrint = (node_p)data_p;
         printf("Number: %d  String: %s\n",nodePrint->number,nodePrint->theString);
-        return(EXIT_SUCCESS);
+        return EXIT_SUCCESS;
     } else {
-        return(EXIT_FAILURE);
+        return EXIT_FAILURE;
     }
 }
 
@@ -105,15 +90,20 @@ int PrintItem (const void *data_p){
  *          actual printing of the data element.
  *
  */
+
 int PrintList (GList * myList_p) {
-    int length = g_list_length(myList_p);
+    int length = g_list_length(myList_p);       // Finds the length of the list 
     
-    for (int i = 0; i < length; i++) {
-        node_p auxNode = g_list_nth_data(myList_p,i);
-        printf("Numero: %d  Value: %s\n",auxNode->number,auxNode->theString);   
+    if (myList_p == NULL) {
+        return EXIT_FAILURE;
+    } 
+    else {
+        for (int i = 0; i < length; i++) {          // Prints every element from list until it equals the length of list
+            node_p auxNode = g_list_nth_data(myList_p,i);
+            printf("Number: %d  Value: %s\n",auxNode->number,auxNode->theString);   
+        }
+        return EXIT_SUCCESS;   
     }
-    
-    return EXIT_SUCCESS;
 }
 
 /**
@@ -138,18 +128,6 @@ int PrintList (GList * myList_p) {
  *
  */
 
-/* !!!CODIGO DE LUZ!!!
-node_p NewItem (int theNumber, char * theString){
-	node_p nodeToInsert;										 //Create node for new data
-	nodeToInsert = (node_p)malloc(sizeof(myData));				 //Allocate memory space for the node
-	//nodeToInsert->number = (int *)malloc(sizeof(theNumber));	 //Allocate memory space for the integer
-	nodeToInsert->theString = (char*)malloc(strlen(theString)+1);//Allocate memory space for the string
-	nodeToInsert->number = theNumber;							 //Assign the Number to the integer in the data block
-	strcpy(nodeToInsert->theString,theString);					 //Assign the string to the string in the data block
-
-	return nodeToInsert;										 //Return the node
-}
-*/
 node_p NewItem (int theNumber, char * theString) {
     node_p newNode;
     newNode = (node_p)malloc(sizeof(myData));                // Create a new node
@@ -352,6 +330,16 @@ GList * CopyList (GList * inputList) {
  *
  */
 GList * FindInList (GList * myList_p, const void *value_p, int key) {
-    
-    return 0;
+    if (key == SINGLESTR) {
+        GList *l;
+        for (l = myList_p; l != NULL; l = l->next)
+        {
+            node_p aux = l->data;
+            if (strcmp(value_p,aux->theString) == 0) {
+                printf("Node Found!     Number: %d  Value: %s\n",aux->number,aux->theString);
+                return l;   
+            }
+        }
+    }
+    return NULL;
 }
