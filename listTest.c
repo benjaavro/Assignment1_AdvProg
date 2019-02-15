@@ -132,7 +132,7 @@ int main (int argc, const char * argv[]) {          // Program entry point
            
            
             /****** Test Insertion at the Head *****/
-           aNode_p = NewItem(9, "Gyro Gearloose");          // New element
+           /*aNode_p = NewItem(9, "Gyro Gearloose");          // New element
             
 #ifdef DEBUG
             printf("Integer to be inserted at the head %d:\n",
@@ -143,12 +143,12 @@ int main (int argc, const char * argv[]) {          // Program entry point
            theList_p = g_list_prepend(theList_p, aNode_p);
            printf("\n Test insertion at the Head:\n");
            if (PrintList(theList_p) != EXIT_SUCCESS)
-              printf("Error printing the list\n");
+              printf("Error printing the list\n");*/
             
            
            
             /***** Test deletion at the head *****/
-           aNode_p = g_list_first(theList_p)->data; // First element address
+           /*aNode_p = g_list_first(theList_p)->data; // First element address
            theList_p = g_list_remove(theList_p, aNode_p);     // Remove node
 
 #ifdef DEBUG
@@ -161,7 +161,7 @@ int main (int argc, const char * argv[]) {          // Program entry point
 
            printf("\n Test deletion from the Head:\n");
            if (PrintList(theList_p) != EXIT_SUCCESS)
-              printf("Error printing the list\n");
+              printf("Error printing the list\n");*/
            
 
            
@@ -173,10 +173,8 @@ int main (int argc, const char * argv[]) {          // Program entry point
               perror("Error: failed to find selected node \n");
            }
            
-           PrintItem(aNode_p);
 
             /***** Test insertion in the middle *****/
-           /*
            aNode_p = NewItem(10, "Launchpad");               // New element
 
            // Insert data before item_p
@@ -191,7 +189,7 @@ int main (int argc, const char * argv[]) {          // Program entry point
 
            printf("\n Test insertion in the middle:\n");
            if (PrintList(theList_p) != EXIT_SUCCESS)
-              printf("Error printing the list\n");*/
+              printf("Error printing the list\n");
 
            /***** Test deletion in the middle & finding a string *****/
            /*
