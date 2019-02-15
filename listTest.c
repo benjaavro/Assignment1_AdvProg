@@ -251,14 +251,14 @@ int main (int argc, const char * argv[]) {          // Program entry point
            }*/
            
            /*** Test Printing List ***/
-           //PrintList(theList_p);
+           PrintList(theList_p);
            
             /***** Destroy the list *****/
-           /*if (DestroyList(theList_p) != EXIT_SUCCESS)
+           if (DestroyList(theList_p) != EXIT_SUCCESS)
               perror("The list was not destroyed successfully");
 
            if (DestroyList(item_p) != EXIT_SUCCESS)
-              perror("The second list was not destroyed successfullt");*/
+              perror("The second list was not destroyed successfullt");
            
         }
         
