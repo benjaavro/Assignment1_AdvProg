@@ -217,7 +217,7 @@ int main (int argc, const char * argv[]) {          // Program entry point
            }*/
 
            /**** Test finding a number in the list ****/
-           /*
+           
            nodeValue = 6;
            item_p = FindInList(theList_p, &nodeValue, SINGLEINT);
            if (item_p == NULL){
@@ -225,7 +225,7 @@ int main (int argc, const char * argv[]) {          // Program entry point
            } else {
               printf("\nFound element %d in the list: \n", nodeValue);
               PrintItem(item_p->data);
-           }*/
+           }
 
            /***** Test copying the list *****/
            /*printf("\nCreating a copy of the list\n");
@@ -249,11 +249,11 @@ int main (int argc, const char * argv[]) {          // Program entry point
            
            /*** Test Printing List ***/
            
-           GList *l;
+           /*GList *l;
             for (l = theList_p; l != NULL; l = l->next)
               {
-                 //printf("%d  %s",l->number,l->theString);
-              }
+                 printf("%d  %s",l->number,l->theString);
+              }*/
 
             /***** Destroy the list *****/
            /*if (DestroyList(theList_p) != EXIT_SUCCESS)
