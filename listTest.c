@@ -231,14 +231,14 @@ int main (int argc, const char * argv[]) {          // Program entry point
            }
 
            /***** Test copying the list *****/
-           /*printf("\nCreating a copy of the list\n");
+           printf("\nCreating a copy of the list\n");
 
            item_p = CopyList(theList_p);
            if (item_p == NULL){
               printf("Error: failed to copy the list \n");
            } else {
               PrintList(item_p);
-           }*/
+           }
 
            /***** Test sorting the list by its number field *****/
            /*
@@ -251,7 +251,7 @@ int main (int argc, const char * argv[]) {          // Program entry point
            }*/
            
            /*** Test Printing List ***/
-           //PrintList(theList_p);
+           PrintList(theList_p);
            
             /***** Destroy the list *****/
            /*if (DestroyList(theList_p) != EXIT_SUCCESS)

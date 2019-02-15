@@ -61,11 +61,11 @@
 
 int PrintItem (const void *data_p){
     if (data_p != NULL) {
-        node_p nodePrint = (node_p)data_p;
-        printf("Number: %d  String: %s\n",nodePrint->number,nodePrint->theString);
+        node_p nodePrint = (node_p)data_p; // Add the node data to the node to print
+        printf("Number: %d  String: %s\n",nodePrint->number,nodePrint->theString); //Print the node
         return EXIT_SUCCESS;
     } else {
-        return EXIT_FAILURE;
+        return EXIT_FAILURE; //Node not found return failure
     }
 }
 
@@ -95,11 +95,11 @@ int PrintList (GList * myList_p) {
     int length = g_list_length(myList_p);       // Finds the length of the list 
     
     if (myList_p == NULL) {
-        return EXIT_FAILURE;
+        return EXIT_FAILURE; //If the list is empty return failure
     } 
     else {
         for (int i = 0; i < length; i++) {          // Prints every element from list until it equals the length of list
-            node_p auxNode = g_list_nth_data(myList_p,i);
+            node_p auxNode = g_list_nth_data(myList_p,i); //Pass the data of the node to an aux to print it
             printf("Number: %d  Value: %s\n",auxNode->number,auxNode->theString);   
         }
         return EXIT_SUCCESS;   
@@ -131,10 +131,9 @@ int PrintList (GList * myList_p) {
 node_p NewItem (int theNumber, char * theString) {
     node_p newNode;
     newNode = (node_p)malloc(sizeof(myData));                // Create a new node
-    
-    newNode -> number = theNumber; 
-    newNode -> theString = (char *)malloc(strlen(theString)+1);
-    strcpy(newNode -> theString, theString);
+    newNode -> number = theNumber; // Assing number to the new node
+    newNode -> theString = (char *)malloc(strlen(theString)+1); // Allocate memory for the string
+    strcpy(newNode -> theString, theString); // Assing the string to the new node
                                      
     
     return newNode;
@@ -331,27 +330,22 @@ GList * CopyList (GList * inputList) {
  */
 GList * FindInList (GList * myList_p, const void *value_p, int key) {
     if (key == SINGLESTR) {
-        GList *l;
-        for (l = myList_p; l != NULL; l = l->next)
+        GList *l; // Create the strcuture to obtain the data
+        for (l = myList_p; l != NULL; l = l->next) // Look for the data
         {
             node_p aux = l->data;
             if (strcmp(value_p,aux->theString) == 0) {
-                //printf("Node Found!     Number: %d  Value: %s\n",aux->number,aux->theString);
-                return l;   
+                return l; // If the data is found return it
             }
         }
     } else if (key == SINGLEINT) {
-        GList *i;
-        for (i = myList_p; i != NULL; i = i->next)
+        GList *i; // Create the strcuture to obtain the data
+        for (i = myList_p; i != NULL; i = i->next) // Look for the data
         {
-            node_p aux = i->data;
-            node_p value = (node_p)value_p;
-            
-            //printf("%d  ",aux->number);
-            //printf("%d\n",value->number);
+            node_p aux = i->data; // Pass the data to the aux
+            node_p value = (node_p)value_p; // Get the key to find the data
             if (aux -> number == value -> number) {
-                //printf("Node Found!     Number: %d  Value: %s\n",aux->number,aux->theString);
-                return i;   
+                return i;   // If the data is found return it
             }
         }
     }
