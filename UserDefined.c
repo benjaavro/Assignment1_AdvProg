@@ -71,7 +71,13 @@
  */
 
 int PrintItem (const void *data_p){
-    return 0;
+    if (data_p != NULL) {
+        node_p nodePrint = (node_p)data_p;
+        printf("Number: %d  String: %s\n",nodePrint->number,nodePrint->theString);
+        return(EXIT_SUCCESS);
+    } else {
+        return(EXIT_FAILURE);
+    }
 }
 
 /**
@@ -96,8 +102,14 @@ int PrintItem (const void *data_p){
  *
  */
 int PrintList (GList * myList_p) {
-    //myList_p = g_list_first (myData);
-    return 0;
+    int length = g_list_length(myList_p);
+    
+    for (int i = 0; i < length; i++) {
+        node_p auxNode = g_list_nth_data(myList_p,i);
+        printf("Numero: %d  Value: %s\n",auxNode->number,auxNode->theString);
+    }
+    
+    return EXIT_SUCCESS;
 }
 
 /**
@@ -125,11 +137,11 @@ int PrintList (GList * myList_p) {
 
 node_p NewItem (int theNumber, char * theString) {
    
-    new = (node_p)malloc(sizeof(myData));
-    node_p new;
+    node_p new; // create node
+    new = (node_p)malloc(sizeof(myData)); //allocate node
     new->number = theNumber;                 // Asign the number read to the struct for a new node.
     new->theString = (char *)malloc(strlen(theString)+1);              // Asign the String read to the struct for a new node.
-    
+    strcpy(new-> theString, theString);
     //printf("Entró a New Item -> Num: %d -> String: %s\n", new.number, new.theString);
     return new;
 }
