@@ -103,8 +103,6 @@ int main (int argc, const char * argv[]) {          // Program entry point
 #endif
                 /***** Test insertion at the Tail *****/
                theList_p = g_list_append(theList_p, aNode_p);
-                printf("Integer read is %d:\n", aNode_p->number);
-                printf("Integer read is %d:\n", theList_p->number);
                 
 #ifdef DEBUG
                assert(theList_p != NULL);
@@ -242,11 +240,11 @@ int main (int argc, const char * argv[]) {          // Program entry point
            }*/
            
            /*** Test Printing List ***/
-           /*GList *l;
+           GList *l;
             for (l = theList_p; l != NULL; l = l->next)
               {
                 printf("%d  %s",l->number,l->theString);
-              }*/
+              }
 
             /***** Destroy the list *****/
            /*if (DestroyList(theList_p) != EXIT_SUCCESS)

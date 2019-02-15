@@ -121,14 +121,16 @@ int PrintList (GList * myList_p) {
  *         of the input string and the input number.
  *
  */
-myData new;
+
 
 node_p NewItem (int theNumber, char * theString) {
-    new.number = theNumber;                 // Asign the number read to the struct for a new node.
-    new.theString = theString;              // Asign the String read to the struct for a new node.
+   
+     node_p new = (node_p)malloc(sizeof(myData));
+    new->number = theNumber;                 // Asign the number read to the struct for a new node.
+    new->theString = (char *)malloc(strlen(theString)+1);              // Asign the String read to the struct for a new node.
     
     //printf("Entró a New Item -> Num: %d -> String: %s\n", new.number, new.theString);
-    return &new;
+    return new;
 }
 
 /**
