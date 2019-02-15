@@ -274,7 +274,9 @@ int CompareItemsWithKey (const void *item1_p, const void *item2_p, int key) {
  *          user-defined structure.
  *          The caller is responsible for de-allocating the new item.
  */
-void * CopyItems (const void *source_p);
+void * CopyItems (const void *source_p){
+    return NULL;
+}
 
 /**
  *
@@ -298,7 +300,9 @@ void * CopyItems (const void *source_p);
  *         before de-referencing it.
  */
 GList * CopyList (GList * inputList) {
-    return NULL;
+     GList *l;
+    l = g_list_copy_deep(inputList,CopyItems(inputList),NULL);
+    return l;
 }
 
 /**

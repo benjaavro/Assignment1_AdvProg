@@ -251,7 +251,7 @@ int main (int argc, const char * argv[]) {          // Program entry point
            }*/
            
            /*** Test Printing List ***/
-           PrintList(theList_p);
+           //PrintList(theList_p);
            
             /***** Destroy the list *****/
            /*if (DestroyList(theList_p) != EXIT_SUCCESS)
@@ -261,7 +261,7 @@ int main (int argc, const char * argv[]) {          // Program entry point
               perror("The second list was not destroyed successfullt");*/
            
         }
-
+        
         fclose (fp);                        /* Close the input data file */
 
        return (EXIT_SUCCESS);
