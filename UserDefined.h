@@ -45,8 +45,8 @@
  *
  */
 typedef struct myData_{
-    int    number;                         /**< number is an unsigned int */
-    char * theString;               /**< theString is a pointer to a char */
+    unsigned int    number;                         /**< number is an unsigned int */
+    char *          theString;               /**< theString is a pointer to a char */
 }myData;
 
 /**

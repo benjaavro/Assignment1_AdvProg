@@ -96,6 +96,7 @@ int main (int argc, const char * argv[]) {          // Program entry point
                char * string = GetString(fp);
                
                aNode_p = NewItem(number, string);
+                //printf("TEST: %d    %s\n",aNode_p->number, aNode_p->theString);
                 
 #ifdef DEBUG
                 printf("Integer read is %d:\n", aNode_p->number);
@@ -103,7 +104,6 @@ int main (int argc, const char * argv[]) {          // Program entry point
 #endif
                 /***** Test insertion at the Tail *****/
                theList_p = g_list_append(theList_p, aNode_p);
-                
 #ifdef DEBUG
                assert(theList_p != NULL);
 #else
@@ -114,7 +114,7 @@ int main (int argc, const char * argv[]) {          // Program entry point
            
             /***** Test deletion at the tail *****/
            
-            /*printf("Original list:\n");
+            printf("-Original list:\n");
             if (PrintList(theList_p) != EXIT_SUCCESS)
                 printf("Error printing the list\n");
 
@@ -122,9 +122,9 @@ int main (int argc, const char * argv[]) {          // Program entry point
            theList_p = g_list_remove(theList_p, aNode_p);    // Remove node
            FreeItem(aNode_p);                            // Deallocate data
             
-            printf("\n Test deletion from the Tail:\n");
+            printf("\n-Test deletion from the Tail:\n");
             if (PrintList(theList_p) != EXIT_SUCCESS)
-                printf("Error printing the list\n");*/
+                printf("Error printing the list\n");
             
             /****** Test Insertion at the Head *****/
            
@@ -240,12 +240,12 @@ int main (int argc, const char * argv[]) {          // Program entry point
            }*/
            
            /*** Test Printing List ***/
-           /*
+           
            GList *l;
             for (l = theList_p; l != NULL; l = l->next)
               {
-                // printf("%d  %s",l->number,l->theString);
-              }*/
+                 //printf("%d  %s",l->number,l->theString);
+              }
 
             /***** Destroy the list *****/
            /*if (DestroyList(theList_p) != EXIT_SUCCESS)
