@@ -41,17 +41,6 @@
 #include "UserDefined.h"               // All the user defined functions
 
 /**
- * @struct myData
- *
- * @brief This is the basic user-defined element of the linked list
- *
- * The user-defined data structure is an @c int and a @c string. These
- * are used just to show how to implement user-defined structures.
- *
- */
-
-
-/**
  * @typedef node_p
  *
  * @brief Declares a pointer type to the user-defined data structure
@@ -70,8 +59,29 @@
  *
  */
 
+
+/*
 int PrintItem (const void *data_p){
-    return 0;
+	if(data_p != NULL){												//Check if the data block is empty
+		node_p nodeToPrint = (node_p)data_p;						//Assign data block to the local node
+		printf("The number contained is: %d\n",nodeToPrint->number);//Print the number contained in the block
+		printf("The string is: %s\n",nodeToPrint->theString);		//Print the string contained in the block
+		return(EXIT_SUCCESS);										//Inform of successful print
+	}else{
+		printf("The list is empty\n");								//Inform the user the list is empty
+		return(EXIT_FAILURE);										//Inform failure
+	}
+}
+*/
+
+int PrintItem (const void *data_p){
+    if (data_p != NULL) {
+        node_p nodePrint = (node_p)data_p;
+        printf("Number: %d  String: %s",nodePrint -> number,nodePrint -> theString);
+        return(EXIT_SUCCESS);
+    } else {
+        return(EXIT_FAILURE);
+    }
 }
 
 /**
@@ -96,7 +106,7 @@ int PrintItem (const void *data_p){
  *
  */
 int PrintList (GList * myList_p) {
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 /**
@@ -120,14 +130,14 @@ int PrintList (GList * myList_p) {
  *         of the input string and the input number.
  *
  */
-myData new;
 
 node_p NewItem (int theNumber, char * theString) {
-    new.number = theNumber;                 // Asign the number read to the struct for a new node.
-    new.theString = theString;              // Asign the String read to the struct for a new node.
+    node_p newNode = (node_p)malloc(sizeof(myData));
     
-    //printf("Entró a New Item -> Num: %d -> String: %s\n", new.number, new.theString);
-    return &new;
+    newNode -> number = theNumber;
+    newNode -> theString = (char *)malloc(strlen(theString)+1);
+    
+    return newNode;
 }
 
 /**
@@ -320,5 +330,6 @@ GList * CopyList (GList * inputList) {
  *
  */
 GList * FindInList (GList * myList_p, const void *value_p, int key) {
+    
     return 0;
 }
