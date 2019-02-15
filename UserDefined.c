@@ -60,7 +60,7 @@
  */
 
 
-/*
+/* !!!CODIGO DE LUZ!!!
 int PrintItem (const void *data_p){
 	if(data_p != NULL){												//Check if the data block is empty
 		node_p nodeToPrint = (node_p)data_p;						//Assign data block to the local node
@@ -77,7 +77,7 @@ int PrintItem (const void *data_p){
 int PrintItem (const void *data_p){
     if (data_p != NULL) {
         node_p nodePrint = (node_p)data_p;
-        printf("Number: %d  String: %s",nodePrint -> number,nodePrint -> theString);
+        printf("Number: %d  String: %s\n",nodePrint->number,nodePrint->theString);
         return(EXIT_SUCCESS);
     } else {
         return(EXIT_FAILURE);
@@ -106,6 +106,13 @@ int PrintItem (const void *data_p){
  *
  */
 int PrintList (GList * myList_p) {
+    int length = g_list_length(myList_p);
+    
+    for (int i = 0; i < length; i++) {
+        node_p auxNode = g_list_nth_data(myList_p,i);
+        printf("Numero: %d  Value: %s\n",auxNode->number,auxNode->theString);   
+    }
+    
     return EXIT_SUCCESS;
 }
 
@@ -131,11 +138,26 @@ int PrintList (GList * myList_p) {
  *
  */
 
+/* !!!CODIGO DE LUZ!!!
+node_p NewItem (int theNumber, char * theString){
+	node_p nodeToInsert;										 //Create node for new data
+	nodeToInsert = (node_p)malloc(sizeof(myData));				 //Allocate memory space for the node
+	//nodeToInsert->number = (int *)malloc(sizeof(theNumber));	 //Allocate memory space for the integer
+	nodeToInsert->theString = (char*)malloc(strlen(theString)+1);//Allocate memory space for the string
+	nodeToInsert->number = theNumber;							 //Assign the Number to the integer in the data block
+	strcpy(nodeToInsert->theString,theString);					 //Assign the string to the string in the data block
+
+	return nodeToInsert;										 //Return the node
+}
+*/
 node_p NewItem (int theNumber, char * theString) {
-    node_p newNode = (node_p)malloc(sizeof(myData));
+    node_p newNode;
+    newNode = (node_p)malloc(sizeof(myData));                // Create a new node
     
-    newNode -> number = theNumber;
+    newNode -> number = theNumber; 
     newNode -> theString = (char *)malloc(strlen(theString)+1);
+    strcpy(newNode -> theString, theString);
+                                     
     
     return newNode;
 }

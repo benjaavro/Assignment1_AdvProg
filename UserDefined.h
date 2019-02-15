@@ -47,8 +47,6 @@
 typedef struct myData_{
     unsigned int    number;                         /**< number is an unsigned int */
     char *          theString;               /**< theString is a pointer to a char */
-    GList *next;
-    GList *prev;
 }myData;
 
 /**

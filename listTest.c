@@ -96,6 +96,7 @@ int main (int argc, const char * argv[]) {          // Program entry point
                char * string = GetString(fp);
                
                aNode_p = NewItem(number, string);
+                //printf("TEST: %d    %s\n",aNode_p->number, aNode_p->theString);
                 
 #ifdef DEBUG
                 printf("Integer read is %d:\n", aNode_p->number);
@@ -103,7 +104,6 @@ int main (int argc, const char * argv[]) {          // Program entry point
 #endif
                 /***** Test insertion at the Tail *****/
                theList_p = g_list_append(theList_p, aNode_p);
-                
 #ifdef DEBUG
                assert(theList_p != NULL);
 #else
