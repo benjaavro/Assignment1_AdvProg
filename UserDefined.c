@@ -336,8 +336,22 @@ GList * FindInList (GList * myList_p, const void *value_p, int key) {
         {
             node_p aux = l->data;
             if (strcmp(value_p,aux->theString) == 0) {
-                printf("Node Found!     Number: %d  Value: %s\n",aux->number,aux->theString);
+                //printf("Node Found!     Number: %d  Value: %s\n",aux->number,aux->theString);
                 return l;   
+            }
+        }
+    } else if (key == SINGLEINT) {
+        GList *i;
+        for (i = myList_p; i != NULL; i = i->next)
+        {
+            node_p aux = i->data;
+            node_p value = (node_p)value_p;
+            
+            //printf("%d  ",aux->number);
+            //printf("%d\n",value->number);
+            if (aux -> number == value -> number) {
+                //printf("Node Found!     Number: %d  Value: %s\n",aux->number,aux->theString);
+                return i;   
             }
         }
     }
