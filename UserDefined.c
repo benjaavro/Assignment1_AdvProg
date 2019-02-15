@@ -125,7 +125,8 @@ int PrintList (GList * myList_p) {
 
 node_p NewItem (int theNumber, char * theString) {
    
-     node_p new = (node_p)malloc(sizeof(myData));
+    new = (node_p)malloc(sizeof(myData));
+    node_p new;
     new->number = theNumber;                 // Asign the number read to the struct for a new node.
     new->theString = (char *)malloc(strlen(theString)+1);              // Asign the String read to the struct for a new node.
     
