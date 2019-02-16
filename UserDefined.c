@@ -159,6 +159,8 @@ node_p NewItem (int theNumber, char * theString) {
  *          user-defined structure.
  */
 int FreeItem (const void *data_p) {
+    node_p nodeFree = (node_p)data_p;
+    free(nodeFree);
     return 0;
 }
 
