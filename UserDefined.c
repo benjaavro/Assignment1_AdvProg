@@ -270,12 +270,12 @@ int CompareItemsWithKey (const void *item1_p, const void *item2_p, int key) {
  */
 void * CopyItems (const void *source_p){
     if(source_p!=NULL){
-        node_p nodeCopy = (node_p)malloc(sizeof(struct myData_)); // We allocate space for our new node that we will copy the data into
-        nodeCopy->number = ((node_p)source_p)->number; // We copy the number from original node into the new node
-        nodeCopy->theString = strdup(((node_p)source_p)->theString); // We copy the string from the original node into the new node
-        return nodeCopy; // We return the pointer to the new node
+        node_p nodeCopy = (node_p)malloc(sizeof(struct myData_)); // Allocate space for new node 
+        nodeCopy->number = ((node_p)source_p)->number; // Copy the number from original node into the new node
+        nodeCopy->theString = strdup(((node_p)source_p)->theString); // Copy the string from the original node into the new node
+        return nodeCopy;
     }
-    return NULL; // If the source pointer is null we return null
+    return NULL;
 }
 
 /**
