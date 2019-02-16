@@ -159,8 +159,8 @@ node_p NewItem (int theNumber, char * theString) {
  *          user-defined structure.
  */
 int FreeItem (const void *data_p) {
-    node_p nodeFree = (node_p)data_p;
-    free(nodeFree);
+    node_p nodeFree = (node_p)data_p; // Get the pointer
+    free(nodeFree); // Dellocate memory with free()
     return 0;
 }
 
@@ -234,7 +234,6 @@ int CompareItems (const void *item1_p, const void *item2_p) {
     a = item1->number;
     b = item2->number;
     
-    //printf("%d  - %d\n",a, item2->number);
                                         // Based on g_list
     if (a > b)  { return (1); }         // 
     if (a == b) { return (0); }         //
