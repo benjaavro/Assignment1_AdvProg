@@ -40,32 +40,13 @@
 #include <glib.h>  // Bring in glib for all doubly-linked list functions
 #include "UserDefined.h"               // All the user defined functions
 
-/**
- * @typedef node_p
- *
- * @brief Declares a pointer type to the user-defined data structure
- *
- */
-
-/**
- * @enum order
- *
- * @brief Used to identify order in the SortList() and FindInList()
- * functions.
- *
- * The @c order enum describes the possible outcomes {LESS, EQUAL, GREATER,
- * NOTEQUAL} of comparing elements in the SortList() and FindInList()
- * functions.
- *
- */
-
 int PrintItem (const void *data_p){
     if (data_p != NULL) {
-        node_p nodePrint = (node_p)data_p; // Add the node data to the node to print
-        printf("Number: %d  String: %s\n",nodePrint->number,nodePrint->theString); //Print the node
+        node_p nodePrint = (node_p)data_p;           // Add the node data to the node to print
+        printf("Number: %d  String: %s\n",nodePrint->number,nodePrint->theString); //Print node
         return EXIT_SUCCESS;
     } else {
-        return EXIT_FAILURE; //Node not found return failure
+        return EXIT_FAILURE;                        //Node not found return failure
     }
 }
 
@@ -92,15 +73,15 @@ int PrintItem (const void *data_p){
  */
 
 int PrintList (GList * myList_p) {
-    int length = g_list_length(myList_p);       // Finds the length of the list 
+    int length = g_list_length(myList_p);                       // Finds the length of the list 
     printf("\n");
     if (myList_p == NULL) {
-        return EXIT_FAILURE; //If the list is empty return failure
+        return EXIT_FAILURE;                                    //If the list is empty return failure
     } 
     else {
-        for (int i = 0; i < length; i++) {          // Prints every element from list until it equals the length of list
-            node_p auxNode = g_list_nth_data(myList_p,i); //Pass the data of the node to an aux to print it
-            printf("Number: %d  Value: %s\n",auxNode->number,auxNode->theString);   
+        for (int i = 0; i < length; i++) {                      // Prints every element from list 
+            node_p auxNode = g_list_nth_data(myList_p,i);       //Pass the data of the node to an aux to print it
+            printf("Number: %d  Value: %s\n",auxNode->number,auxNode->theString);  // Prints node_p -> data 
         }
         return EXIT_SUCCESS;   
     }
@@ -130,12 +111,10 @@ int PrintList (GList * myList_p) {
 
 node_p NewItem (int theNumber, char * theString) {
     node_p newNode;
-    newNode = (node_p)malloc(sizeof(myData));  // Create a new node
-    newNode -> number = theNumber; // Assing number to the new node
-    newNode -> theString = (char *)malloc(strlen(theString)+1); // Allocate memory for the string
-    strcpy(newNode -> theString, theString); // Assing the string to the new node
-                                     
-    
+    newNode = (node_p)malloc(sizeof(myData));                       // Create a new node
+    newNode -> number = theNumber;                                  // Assing number to the new node
+    newNode -> theString = (char *)malloc(strlen(theString)+1);     // Allocate memory for the string
+    strcpy(newNode -> theString, theString);                        // Assing the string to the new node                    
     return newNode;
 }
 
@@ -212,32 +191,19 @@ int DestroyList (GList * theList_p) {
  * @endcode
  *
  */
-/*
-gint gint_compare(gconstpointer ptr_a, gconstpointer ptr_b)  
-{  
-  gint a, b;  
-  a = *(gint *)ptr_a;  
-  b = *(gint *)ptr_b;  
-  
-  if (a > b)  { return (1); }  
-  if (a == b) { return (0); }  
-  default: a < b   
-                return (-1);  
-}  
-*/
 
 int CompareItems (const void *item1_p, const void *item2_p) {
-    node_p item1 = (node_p)item1_p;
+    node_p item1 = (node_p)item1_p;     // Get Values from nodes in list
     node_p item2 = (node_p)item2_p;
     
-    int a, b;
-    a = item1->number;
+    int a, b;                           // Create auxiliar variables
+    a = item1->number;                  // Assign Node_p->number to the auxiliar variables
     b = item2->number;
     
                                         // Based on g_list
-    if (a > b)  { return (1); }         // 
-    if (a == b) { return (0); }         //
-    return (-1);                        //
+    if (a > b)  { return (1); }         // Return 1 if the first number is bigger than the second
+    if (a == b) { return (0); }         // Return 0 if both numbers have the same value
+    return (-1);                        // By Default it returns a -1 when the first number is smaller
 }
 
 /**
@@ -301,8 +267,8 @@ int CompareItemsWithKey (const void *item1_p, const void *item2_p, int key) {
  *          The caller is responsible for de-allocating the new item.
  */
 void * CopyItems (const void *source_p){
-    node_p source = (node_p)source_p; // Get the pointer
-    source = (node_p)malloc(sizeof(myData)); // Allocate memory
+    node_p source = (node_p)source_p;                   // Get the pointer
+    source = (node_p)malloc(sizeof(myData));            // Allocate memory
     return NULL;
 }
 
@@ -328,8 +294,8 @@ void * CopyItems (const void *source_p){
  *         before de-referencing it.
  */
 GList * CopyList (GList * inputList) {
-    GList *l; // Create the structure to receive the copy
-    l = g_list_copy_deep(inputList,CopyItems(inputList),NULL); // Copy the list
+    GList *l;                                                   // Create the structure to receive the copy
+    l = g_list_copy_deep(inputList,CopyItems(inputList),NULL);  // Copy the list
     return l;
 }
 
@@ -362,24 +328,24 @@ GList * CopyList (GList * inputList) {
  */
 GList * FindInList (GList * myList_p, const void *value_p, int key) {
     if (key == SINGLESTR) {
-        GList *l; // Create the strcuture to obtain the data
-        for (l = myList_p; l != NULL; l = l->next) // Look for the data
+        GList *l;                                       // Create the strcuture to obtain the data
+        for (l = myList_p; l != NULL; l = l->next)      // Look for the data
         {
             node_p aux = l->data;
             if (strcmp(value_p,aux->theString) == 0) {
-                return l; // If the data is found return it
+                return l;                               // If the data is found return it
             }
         }
     } else if (key == SINGLEINT) {
-        GList *i; // Create the strcuture to obtain the data
-        for (i = myList_p; i != NULL; i = i->next) // Look for the data
+        GList *i;                                       // Create the strcuture to obtain the data
+        for (i = myList_p; i != NULL; i = i->next)      // Look for the data
         {
-            node_p aux = i->data; // Pass the data to the aux
-            node_p value = (node_p)value_p; // Get the key to find the data
+            node_p aux = i->data;                       // Pass the data to the aux
+            node_p value = (node_p)value_p;             // Get the key to find the data
             if (aux -> number == value -> number) {
-                return i;   // If the data is found return it
+                return i;                               // If the data is found return it
             }
         }
     }
-    return NULL;
+    return NULL;                                        // Any other value for key returns NULL
 }

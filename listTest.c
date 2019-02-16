@@ -57,6 +57,32 @@
  */
 #define NUMPARAMS 2
 
+/*************************************************************************
+ *                            Assignment #1                              *
+ *************************************************************************/
+/*
+                Benjamín Ávila Rosas            A01361843
+                Alejandro Vazquez Somoza        A0136####
+*/
+
+
+/*************************************************************************
+ *                        Compiling Instructions                         *
+ *************************************************************************/
+
+/*
+We use a very few  and simple steps for compile and run our proyect:
+
+1) Open a Terminal tab
+
+2) Move to the directory where the proyect is stored
+
+3) Paste this commands in order into the terminal tab:
+    
+    cc *.c `pkg-config --cflags --libs glib-2.0` -o listTest
+    ./listTest nodes.txt
+
+*/
 
 /*************************************************************************
  *                           Main entry point                            *
