@@ -164,7 +164,7 @@ int FreeItem (const void *data_p) {
  *
  */
 int DestroyList (GList * theList_p) {
-   g_list_free_full(theList_p, free);
+   g_list_free_full(theList_p, free); // Drestroy the list with glib
     return 0;
 }
 
@@ -269,13 +269,13 @@ int CompareItemsWithKey (const void *item1_p, const void *item2_p, int key) {
  *          The caller is responsible for de-allocating the new item.
  */
 void * CopyItems (const void *source_p){
-    /*node_p source, sourcep;
-    source = (node_p)malloc(sizeof(myData));
-    sourcep = (node_p)source_p;
-    source -> number = sourcep -> number;                                  // Assing number to the new node
-    source -> theString = (char *)malloc(strlen(sourcep -> theString)+1);     // Allocate memory for the string
-    strcpy(source -> theString, sourcep -> theString);*/
-    return source;
+    if(source_p!=NULL){
+        node_p nodeCopy = (node_p)malloc(sizeof(struct myData_)); // We allocate space for our new node that we will copy the data into
+        nodeCopy->number = ((node_p)source_p)->number; // We copy the number from original node into the new node
+        nodeCopy->theString = strdup(((node_p)source_p)->theString); // We copy the string from the original node into the new node
+        return nodeCopy; // We return the pointer to the new node
+    }
+    return NULL; // If the source pointer is null we return null
 }
 
 /**
@@ -300,13 +300,17 @@ void * CopyItems (const void *source_p){
  *         before de-referencing it.
  */
 GList * CopyList (GList * inputList) {
-    GList *l;
-    int length = g_list_length(inputList);
-    for (int i = 0; i < length; i++) {                      // Prints every element from list
-        node_p auxNode = g_list_nth_data(inputList,i);       //Pass the data of the node to an aux to print it
-        //l = g_list_copy_deep(inputList,(auxNode),NULL);  // Copy the list
+    GList *theCopy = NULL; // Create a Glist for the copy list
+    if(inputList!=NULL){
+        GList *l; // Temporary pointer
+        node_p aNode_p=NULL;
+        for(l=inputList;l!=NULL;l=l->next){
+            node_p node = l->data; // Get data
+            aNode_p = NewItem(node->number, node->theString); // Create the new and allocate it in memory
+            theCopy = g_list_append(theCopy, aNode_p); // The new node created is appended to the copy of the list
+        }
     }
-    return l;
+    return theCopy;
 }
 
 /**

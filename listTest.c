@@ -62,7 +62,7 @@
  *************************************************************************/
 /*
                 Benjamín Ávila Rosas            A01361843
-                Alejandro Vazquez Somoza        A0136####
+                Alejandro Vazquez Somoza        A01363508
 */
 
 
@@ -279,13 +279,9 @@ int main (int argc, const char * argv[]) {          // Program entry point
             /***** Destroy the list *****/
            if (DestroyList(theList_p) != EXIT_SUCCESS)
               perror("The list was not destroyed successfully");
-            //PrintList(theList_p);
-            //PrintList(item_p);
+            
            if (DestroyList(item_p) != EXIT_SUCCESS)
               perror("The second list was not destroyed successfullt");
-            //printf("%p\n",theList_p);
-            //printf("%p\n",item_p);
-            //PrintList(item_p);
            
         }
         
