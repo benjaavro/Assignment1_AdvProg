@@ -76,6 +76,7 @@ int PrintList (GList * myList_p) {
     int length = g_list_length(myList_p);                       // Finds the length of the list 
     printf("\n");
     if (myList_p == NULL) {
+        printf("LISTA VACIA\n");
         return EXIT_FAILURE;                                    //If the list is empty return failure
     } 
     else {
@@ -83,7 +84,7 @@ int PrintList (GList * myList_p) {
             node_p auxNode = g_list_nth_data(myList_p,i);       //Pass the data of the node to an aux to print it
             printf("Number: %d  Value: %s\n",auxNode->number,auxNode->theString);  // Prints node_p -> data 
         }
-        return EXIT_SUCCESS;   
+        return EXIT_SUCCESS;
     }
 }
 
@@ -163,6 +164,7 @@ int FreeItem (const void *data_p) {
  *
  */
 int DestroyList (GList * theList_p) {
+   g_list_free_full(theList_p, free);
     return 0;
 }
 
@@ -267,9 +269,13 @@ int CompareItemsWithKey (const void *item1_p, const void *item2_p, int key) {
  *          The caller is responsible for de-allocating the new item.
  */
 void * CopyItems (const void *source_p){
-    node_p source = (node_p)source_p;                   // Get the pointer
-    source = (node_p)malloc(sizeof(myData));            // Allocate memory
-    return NULL;
+    /*node_p source, sourcep;
+    source = (node_p)malloc(sizeof(myData));
+    sourcep = (node_p)source_p;
+    source -> number = sourcep -> number;                                  // Assing number to the new node
+    source -> theString = (char *)malloc(strlen(sourcep -> theString)+1);     // Allocate memory for the string
+    strcpy(source -> theString, sourcep -> theString);*/
+    return source;
 }
 
 /**
@@ -294,8 +300,12 @@ void * CopyItems (const void *source_p){
  *         before de-referencing it.
  */
 GList * CopyList (GList * inputList) {
-    GList *l;                                                   // Create the structure to receive the copy
-    l = g_list_copy_deep(inputList,CopyItems(inputList),NULL);  // Copy the list
+    GList *l;
+    int length = g_list_length(inputList);
+    for (int i = 0; i < length; i++) {                      // Prints every element from list
+        node_p auxNode = g_list_nth_data(inputList,i);       //Pass the data of the node to an aux to print it
+        //l = g_list_copy_deep(inputList,(auxNode),NULL);  // Copy the list
+    }
     return l;
 }
 

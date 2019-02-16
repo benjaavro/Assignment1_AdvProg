@@ -3,7 +3,7 @@
  *
  * @file    FileIO.c
  *
- * @author  Alejandro Vazquez, Benjamin Avila
+ * @author  Abelardo Lopez Lagunas
  *
  * @date    May 16 09:14 2016
  *
