@@ -240,25 +240,25 @@ int main (int argc, const char * argv[]) {          // Program entry point
               PrintList(item_p);
            }
 
+           
            /***** Test sorting the list by its number field *****/
-           /*
            item_p = g_list_sort(item_p, CompareItems);
            if (item_p == NULL){
               printf("Error: failed to sort copy the list \n");
            } else {
               printf("Sorted copy\n");
               PrintList(item_p);
-           }*/
+           }
            
            /*** Test Printing List ***/
            PrintList(theList_p);
            
             /***** Destroy the list *****/
-           if (DestroyList(theList_p) != EXIT_SUCCESS)
+           /*if (DestroyList(theList_p) != EXIT_SUCCESS)
               perror("The list was not destroyed successfully");
 
            if (DestroyList(item_p) != EXIT_SUCCESS)
-              perror("The second list was not destroyed successfullt");
+              perror("The second list was not destroyed successfullt");*/
            
         }
         

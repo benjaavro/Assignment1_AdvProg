@@ -93,7 +93,7 @@ int PrintItem (const void *data_p){
 
 int PrintList (GList * myList_p) {
     int length = g_list_length(myList_p);       // Finds the length of the list 
-    
+    printf("\n");
     if (myList_p == NULL) {
         return EXIT_FAILURE; //If the list is empty return failure
     } 
@@ -212,8 +212,33 @@ int DestroyList (GList * theList_p) {
  * @endcode
  *
  */
+/*
+gint gint_compare(gconstpointer ptr_a, gconstpointer ptr_b)  
+{  
+  gint a, b;  
+  a = *(gint *)ptr_a;  
+  b = *(gint *)ptr_b;  
+  
+  if (a > b)  { return (1); }  
+  if (a == b) { return (0); }  
+  default: a < b   
+                return (-1);  
+}  
+*/
+
 int CompareItems (const void *item1_p, const void *item2_p) {
-    return 0;
+    node_p item1 = (node_p)item1_p;
+    node_p item2 = (node_p)item2_p;
+    
+    int a, b;
+    a = item1->number;
+    b = item2->number;
+    
+    //printf("%d  - %d\n",a, item2->number);
+                                        // Based on g_list
+    if (a > b)  { return (1); }         // 
+    if (a == b) { return (0); }         //
+    return (-1);                        //
 }
 
 /**
